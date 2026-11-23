@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أُنْس · رفيقك في القرآن</title>
+<meta name="description" content="أُنْس: رفيقك في القرآن. مصحف وبحث واستماع آية بآية، وحفظ ذكي يستمع لتلاوتك ويصحّح لك لحظياً، مع ورد يومي ومنبّه ومؤذن. الإصدار 1.0.0.">
+<meta property="og:title" content="أُنْس · Uns">
+<meta property="og:description" content="رفيقك في القرآن: اقرأ، استمع، وسمّع حفظك بصوتك.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="site-assets/uns-icon.jpg">
+<meta name="theme-color" content="#0F1117">
+<link rel="icon" href="site-assets/uns-icon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#0F1117; --surface:#171A22; --line:#262B36;
+  --text:#F1EBDD; --muted:#9DB0A5; --gold:#D9B45B; --gold-ink:#1A1405;
+  --radius:16px;
+  --display:"Amiri","Noto Naskh Arabic","Traditional Arabic",Georgia,serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic","Noto Sans",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark;scroll-behavior:smooth;scroll-padding-top:72px;background:#0F1117}
+body{margin:0;background:transparent;color:var(--text);font-family:var(--body);line-height:1.8;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:960px;margin-inline:auto;padding-inline:20px}
+
+/* background layers */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(900px 480px at 85% -12%,rgba(217,180,91,.06),transparent 62%),#0F1117}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:rgba(15,17,23,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:1.5rem;font-weight:700;color:var(--gold)}
+.brand img{width:40px;height:40px;border-radius:11px;box-shadow:0 0 0 1px rgba(217,180,91,.35)}
+nav{display:flex;gap:18px;margin-inline-start:auto;font-size:.92rem}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--text)}
+.lang{font:inherit;font-size:.85rem;color:var(--text);background:none;border:1px solid var(--line);border-radius:999px;padding:3px 14px;cursor:pointer}
+.lang:hover{border-color:var(--gold)}
+@media (max-width:560px){nav{display:none}.lang{margin-inline-start:auto}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;padding:56px 0 48px}
+.hero img{width:200px;height:200px;border-radius:44px;box-shadow:0 0 0 1px rgba(217,180,91,.35),0 0 90px rgba(217,180,91,.22),0 30px 70px rgba(0,0,0,.6)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(3.8rem,12vw,6.4rem);line-height:1.05;margin:0;color:var(--gold);text-shadow:0 0 40px rgba(217,180,91,.28)}
+.tag{font-size:1.2rem;margin:10px 0 6px}
+.lead{color:var(--muted);margin:0 0 24px;max-width:56ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.14);background:rgba(23,26,34,.9);color:var(--text)}
+.btn:hover{border-color:var(--gold)}
+.btn.main{background:linear-gradient(180deg,#E4C26E,#C99F44);color:var(--gold-ink);border-color:#E4C26E;box-shadow:0 10px 30px rgba(217,180,91,.25)}
+.btn.main:hover{filter:brightness(1.08)}
+.meta{margin:14px 0 0;color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.hero{grid-template-columns:1fr;text-align:center;justify-items:center;padding-top:36px}.cta{justify-content:center}.hero img{width:150px;height:150px;border-radius:34px}}
+
+/* sections */
+section{padding:48px 0;border-top:1px solid rgba(255,255,255,.07)}
+h2{font-family:var(--display);font-size:2rem;margin:0 0 6px;font-weight:700}
+.sub{color:var(--muted);margin:0 0 26px}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.feature{background:linear-gradient(180deg,rgba(23,26,34,.92),rgba(23,26,34,.65));border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:24px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.feature h3{margin:0 0 6px;font-size:1.05rem;color:var(--gold)}
+.feature p{margin:0;color:var(--muted);font-size:.95rem}
+
+dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:0;border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);overflow:hidden;background:rgba(23,26,34,.85)}
+dt,dd{margin:0;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.07)}
+dt{color:var(--muted)}
+dl>:nth-last-child(-n+2){border-bottom:0}
+.hash{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;word-break:break-all;direction:ltr;unicode-bidi:plaintext}
+.copy{font:inherit;font-size:.8rem;color:var(--text);background:none;border:1px solid var(--line);border-radius:8px;padding:2px 12px;cursor:pointer}
+.copy:hover{border-color:var(--gold)}
+.perm{margin:18px 0 0;color:var(--muted);font-size:.92rem}
+ol{margin:0;padding-inline-start:1.4em}
+li{margin-bottom:10px}
+li::marker{color:var(--gold);font-weight:700}
+.note{margin-top:18px;padding:14px 18px;border-radius:12px;border:1px dashed var(--line);color:var(--muted);font-size:.92rem}
+
+
+/* screenshots */
+.shots{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;-webkit-overflow-scrolling:touch}
+.shot{flex:0 0 min(64vw,250px);margin:0;scroll-snap-align:center;text-align:center}
+.shot img{display:block;width:100%;height:auto;border-radius:26px;box-shadow:0 0 0 1px rgba(255,255,255,.10),0 22px 50px rgba(0,0,0,.55)}
+.shot figcaption{margin-top:12px;color:var(--muted);font-size:.9rem}
+@media (min-width:900px){.shots{overflow:visible}.shot{flex:1 1 0}}
+
+footer{border-top:1px solid rgba(255,255,255,.07);padding:30px 0 44px;color:var(--muted);font-size:.88rem}
+footer a{color:var(--text)}
+[data-l]{display:none}
+html[lang="ar"] [data-l="ar"],html[lang="en"] [data-l="en"]{display:revert}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="site-assets/uns-icon.jpg" alt="">أُنْس</a>
+    <nav>
+      <a href="#shots"><span data-l="ar">لقطات</span><span data-l="en">Screenshots</span></a>
+      <a href="#features"><span data-l="ar">المزايا</span><span data-l="en">Features</span></a>
+      <a href="#release"><span data-l="ar">الإصدار</span><span data-l="en">Release</span></a>
+      <a href="#install"><span data-l="ar">التثبيت</span><span data-l="en">Install</span></a>
+    </nav>
+    <button class="lang" id="lang" type="button" aria-label="Language">English</button>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+  <div class="hero">
+    <img src="site-assets/uns-icon.jpg" alt="شعار أُنْس">
+    <div>
+      <h1>أُنْس</h1>
+      <p class="tag">
+        <span data-l="ar">رفيقك في القرآن: اقرأ، استمع، وسمّع حفظك بصوتك.</span>
+        <span data-l="en">Your Quran companion: read, listen, and recite from memory.</span>
+      </p>
+      <p class="lead">
+        <span data-l="ar">أُنْس تطبيق أندرويد للقرآن الكريم: مصحف وبحث واستماع آية بآية، وحفظ ذكي يستمع لتلاوتك ويصحّح لك لحظياً، مع ورد يومي ومنبّه ومؤذن.</span>
+        <span data-l="en">Uns is an Android Quran app: mushaf, search and verse-by-verse listening, plus smart memorisation that hears your recitation and corrects you instantly, with a daily wird, alarm and prayer times.</span>
+      </p>
+      <div class="cta">
+        <a class="btn main" id="dl" href="#"><span data-l="ar">تنزيل لأندرويد</span><span data-l="en">Download for Android</span></a>
+        <a class="btn" id="repo" href="#"><span data-l="ar">المستودع</span><span data-l="en">Repository</span></a>
+      </div>
+      <p class="meta">app-Uns.apk · <span data-l="ar">أندرويد 7 فأحدث · 57 ميجابايت</span><span data-l="en">Android 7+ · 57 MB</span></p>
+    </div>
+  </div>
+
+  <section id="shots">
+    <h2><span data-l="ar">لقطات من التطبيق</span><span data-l="en">Screenshots</span></h2>
+    <p class="sub"><span data-l="ar">من نسخة 1.0.0 على هاتف أندرويد.</span><span data-l="en">From version 1.0.0 on an Android phone.</span></p>
+    <div class="shots">
+      <figure class="shot"><img src="site-assets/shot-home.jpg" width="540" height="1147" loading="lazy" alt="الشاشة الرئيسية: الورد اليومي وقائمة الأقسام">
+        <figcaption><span data-l="ar">الرئيسية والورد اليومي</span><span data-l="en">Home &amp; daily wird</span></figcaption></figure>
+      <figure class="shot"><img src="site-assets/shot-memorize.jpg" width="540" height="1147" loading="lazy" alt="شاشة الحفظ الذكي مع إخفاء النص والميكروفون">
+        <figcaption><span data-l="ar">الحفظ الذكي</span><span data-l="en">Smart memorisation</span></figcaption></figure>
+      <figure class="shot"><img src="site-assets/shot-search.jpg" width="540" height="1147" loading="lazy" alt="شاشة البحث في السور والآيات والكلمات والموضوعات">
+        <figcaption><span data-l="ar">البحث في القرآن</span><span data-l="en">Search the Quran</span></figcaption></figure>
+      <figure class="shot"><img src="site-assets/shot-more.jpg" width="540" height="1147" loading="lazy" alt="شاشة المزيد: الاستماع والمؤذن والمنبه والملاحظات">
+        <figcaption><span data-l="ar">المزيد</span><span data-l="en">More</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2><span data-l="ar">ما الذي يقدّمه</span><span data-l="en">What it does</span></h2>
+    <p class="sub"><span data-l="ar">كل ما تحتاجه بين يدي القرآن، بالعربية.</span><span data-l="en">Everything you need around the Quran, in Arabic.</span></p>
+    <div class="features">
+      <div class="feature">
+        <h3><span data-l="ar">الحفظ الذكي</span><span data-l="en">Smart memorisation</span></h3>
+        <p><span data-l="ar">سمّع بصوتك فيصحّح لك الكلمات لحظياً، مع إخفاء النص وتلميح وإعادة.</span><span data-l="en">Recite aloud and get word-by-word correction instantly, with hidden text, hints and replay.</span></p>
+      </div>
+      <div class="feature">
+        <h3><span data-l="ar">البحث في القرآن</span><span data-l="en">Search</span></h3>
+        <p><span data-l="ar">ابحث في السور والآيات والكلمات والموضوعات، أو بالصوت.</span><span data-l="en">Search surahs, verses, words and topics, or by voice.</span></p>
+      </div>
+      <div class="feature">
+        <h3><span data-l="ar">الاستماع</span><span data-l="en">Listening</span></h3>
+        <p><span data-l="ar">تلاوة آية بآية بصوت قارئ.</span><span data-l="en">Verse-by-verse recitation by a reciter.</span></p>
+      </div>
+      <div class="feature">
+        <h3><span data-l="ar">الورد اليومي والمنبّه</span><span data-l="en">Daily wird &amp; alarm</span></h3>
+        <p><span data-l="ar">حدّد عدد آيات وردك وتابع تقدّمك، وتنبيه بموعده.</span><span data-l="en">Set your daily verses, track progress, and get a reminder at your time.</span></p>
+      </div>
+      <div class="feature">
+        <h3><span data-l="ar">مؤذن القرآن</span><span data-l="en">Prayer times</span></h3>
+        <p><span data-l="ar">مواقيت الصلاة وتذكير بالأذان.</span><span data-l="en">Prayer times with adhan reminders.</span></p>
+      </div>
+      <div class="feature">
+        <h3><span data-l="ar">المفضلة وملاحظاتي</span><span data-l="en">Favourites &amp; notes</span></h3>
+        <p><span data-l="ar">احفظ آياتك وصفحاتك، واكتب تدبّراتك على الآيات.</span><span data-l="en">Save verses and pages, and write your reflections on them.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="release">
+    <h2><span data-l="ar">الإصدار 1.0.0</span><span data-l="en">Release 1.0.0</span></h2>
+    <p class="sub"><span data-l="ar">تحقّق من البصمة قبل التثبيت.</span><span data-l="en">Check the fingerprint before installing.</span></p>
+    <dl>
+      <dt><span data-l="ar">الملف</span><span data-l="en">File</span></dt><dd>app-Uns.apk</dd>
+      <dt><span data-l="ar">الحجم</span><span data-l="en">Size</span></dt><dd><span data-l="ar">57 ميجابايت</span><span data-l="en">57 MB</span></dd>
+      <dt><span data-l="ar">يعمل على</span><span data-l="en">Requires</span></dt><dd><span data-l="ar">أندرويد 7.0 فأحدث</span><span data-l="en">Android 7.0 or newer</span></dd>
+      <dt><span data-l="ar">الحزمة</span><span data-l="en">Package</span></dt><dd><code>com.example.uns_quran</code></dd>
+      <dt>SHA-256</dt>
+      <dd class="hash"><code id="sha">85d7011a516518941b8eb5f31ea513bf600fd83ec44b1371a2bf564a8eb0cad3</code>
+        <button class="copy" id="copy" type="button"><span data-l="ar">نسخ</span><span data-l="en">Copy</span></button></dd>
+    </dl>
+    <p class="perm">
+      <span data-l="ar">الصلاحيات: الميكروفون (للاستماع لتلاوتك) والإنترنت.</span>
+      <span data-l="en">Permissions: microphone (to hear your recitation) and internet.</span>
+    </p>
+  </section>
+
+  <section id="install">
+    <h2><span data-l="ar">التثبيت والبدء</span><span data-l="en">Install &amp; start</span></h2>
+    <p class="sub"><span data-l="ar">أربع خطوات.</span><span data-l="en">Four steps.</span></p>
+    <ol>
+      <li><span data-l="ar">اضغط «تنزيل لأندرويد» وافتح الملف بعد انتهاء التنزيل.</span><span data-l="en">Tap “Download for Android” and open the file when it finishes.</span></li>
+      <li><span data-l="ar">اسمح بالتثبيت من هذا المصدر عندما يطلب الهاتف ذلك.</span><span data-l="en">Allow installs from this source when the phone asks.</span></li>
+      <li><span data-l="ar">افتح أُنْس ووافق على إذن الميكروفون.</span><span data-l="en">Open Uns and grant the microphone permission.</span></li>
+      <li><span data-l="ar">اختر سورة وابدأ التلاوة.</span><span data-l="en">Pick a surah and start reciting.</span></li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-l="ar">أُنْس · نسخة تجريبية 1.0.0</span><span data-l="en">Uns · version 1.0.0</span>
+    · <a id="issues" href="#"><span data-l="ar">الإبلاغ عن مشكلة</span><span data-l="en">Report an issue</span></a>
+  </div>
+</footer>
+
+<script>
+/* ===== عدّل السطر ده فقط: اسم_المستخدم/اسم_المستودع على GitHub ===== */
+var REPO = "USERNAME/REPO";
+/* ================================================================== */
+var APK = "app-Uns.apk";
+var base = "https://github.com/" + REPO;
+document.getElementById("dl").href = base + "/releases/latest/download/" + APK;
+document.getElementById("repo").href = base;
+document.getElementById("issues").href = base + "/issues";
+
+var root = document.documentElement, btn = document.getElementById("lang");
+function setLang(l){
+  root.lang = l; root.dir = l === "ar" ? "rtl" : "ltr";
+  btn.textContent = l === "ar" ? "English" : "العربية";
+  document.title = l === "ar" ? "أُنْس · رفيقك في القرآن" : "Uns · Your Quran companion";
+}
+btn.addEventListener("click", function(){ setLang(root.lang === "ar" ? "en" : "ar"); });
+
+document.getElementById("copy").addEventListener("click", function(){
+  var b = this, t = document.getElementById("sha").textContent, ar = root.lang === "ar";
+  function done(){ var o = b.innerHTML; b.textContent = ar ? "تم" : "Copied"; setTimeout(function(){ b.innerHTML = o; }, 1500); }
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){});
+});
+</script>
+</body>
+</html>
